@@ -1,0 +1,83 @@
+
+<div *ngIf="movie" class="selectedMovie">
+  <h2 style="text-align:center ;">Selected movie: {{movie.title}}</h2>
+  <div class="movieDetailsContainer">
+      
+      <img *ngIf="movie.poster_path; else noPosterTemplate"
+      [src]='"https://image.tmdb.org/t/p/original"+movie.poster_path' alt="Movie Poster" loading="lazy">
+      <ng-template #noPosterTemplate>
+          <img src="./assets/img/noPoster.png" alt="No poster found" loading="lazy">
+      </ng-template>
+      
+      
+      <div class="details">
+          <p>Title: {{movie.title}}</p>
+          <p>Original title: {{movie.original_title}}</p>
+          <div>Genres: 
+              <span *ngFor="let gen of movie.genres; let last = last"> 
+                  <span *ngIf="!last; else lastItemTemplate">{{gen.name}}, </span>
+                  <ng-template #lastItemTemplate>
+                      <span>{{gen.name}}</span>
+                  </ng-template>
+              </span>
+          </div>
+        <div><p>Overview:</p>
+            <p *ngIf="movie.overview; else missingOverviewTemplate">{{movie.overview}}</p>
+        </div>
+          <p *ngIf="movie.overview; else missingRuntimeTemplate">Runtime: {{movie.runtime}} minutes</p>
+          <p *ngIf="movie.overview; else missingRatingTemplate">Rating: {{movie.vote_average}}/10</p>
+          <ng-template #missingOverviewTemplate>
+            <p>N/A</p>
+          </ng-template>
+          <ng-template #missingRuntimeTemplate>
+            <p>Runtime: N/A</p>
+          </ng-template>
+          <ng-template #missingRatingTemplate>
+            <p>Rating: N/A</p>
+          </ng-template>
+      </div>
+  </div>
+  <p style="text-align: center;">CAST</p> 
+  <div class="cast">
+    <div class="actor" *ngFor="let actor of cast">
+      <img *ngIf="actor.profile_path; else noProfileTemplate" 
+      [src]='"https://image.tmdb.org/t/p/original"+actor.profile_path' alt="" loading="lazy">
+      <p>{{actor.name}}</p>
+      <ng-template #noProfileTemplate>
+        <img src="./assets/img/noProfilePic.png" alt="No propic found" loading="lazy">
+      </ng-template>
+    </div>
+  </div>
+  <p style="text-align: center;">CREW</p> 
+  <div class="cast">
+    <div class="actor" *ngFor="let person of crew">
+      <img *ngIf="person.profile_path; else noProfileTemplate" 
+      [src]='"https://image.tmdb.org/t/p/original"+person.profile_path' alt="Cast photo" loading="lazy">
+      <div class="crewInfo">
+        <p>{{person.name}}</p>
+        <p>{{person.department}}</p>
+        <p>{{person.job}}</p>
+      </div>
+      <ng-template #noProfileTemplate>
+        <img src="./assets/img/noProfilePic.png" alt="No propic found" loading="lazy">
+      </ng-template>
+    </div>
+  </div>
+  <p style="text-align: center;">SIMILAR MOVIES</p> 
+  <div class="recommended">
+    <div class="similarMovie" *ngFor="let film of movie.similar.results">
+      <img *ngIf="film.poster_path; else noProfileTemplate" 
+      [src]='"https://image.tmdb.org/t/p/original"+film.poster_path' 
+      alt="similar movie poster" 
+      loading="lazy"
+      title="{{film.title}}">
+      
+      <ng-template #noProfileTemplate>
+        <img src="./assets/img/noPoster.png" alt="No poster found" loading="lazy">
+      </ng-template>
+      
+    </div>
+  </div>
+  <button (click)="closeDetails()" class="closeDetails">CLOSE MOVIE DETAILS</button>
+</div>
+

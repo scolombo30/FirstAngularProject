@@ -1,0 +1,4 @@
+<div class="result" *ngIf="filmList" [ngStyle]="{'display': isMovieSelected ? 'none':'flex' }">
+    <app-search-result *ngFor="let film of filmList" [film]="film" (idFilmSelected)="emitId($event)">
+    </app-search-result>
+</div>

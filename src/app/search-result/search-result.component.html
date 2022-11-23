@@ -1,0 +1,12 @@
+<div class="film">
+  <p>{{film.title}}</p>
+  <img *ngIf="film.poster_path; else noPosterTemplate"
+      [src]='"https://image.tmdb.org/t/p/original"+film.poster_path' alt="Movie Poster"
+      loading="lazy">
+
+  <ng-template #noPosterTemplate>
+    <img src="./assets/img/noPoster.png" alt="No poster found">
+  </ng-template>
+  
+  <button class="selectButton" (click)="emitIdFilmSelected()">SELECT MOVIE</button>
+</div>

@@ -1,0 +1,107 @@
+.header {
+  overflow: hidden;
+  background-color: #032541;
+  color: white;
+  font-size: larger;
+  font-weight: 450;
+  padding-left: 15px;
+  margin-bottom: 20px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.appName{
+  
+}
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.containerInput {
+  background-color: #313131;
+  height: 40px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 7px;
+  padding-right: 7px;
+}
+
+.inputText {
+  background-color: #313131;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 3px;
+  border: none;
+  color: white;
+
+  &:active {
+    background-color: #313131;
+    color: white;
+    border: none;
+  }
+
+  &:focus {
+    background-color: #313131;
+    color: white;
+    border: none;
+    outline: none;
+  }
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    box-shadow: 0 0 0 30px #313131 inset !important;
+    -webkit-box-shadow: 0 0 0 30px #313131 inset !important;
+  }
+
+  &:-webkit-autofill {
+    -webkit-text-fill-color: rgb(255, 255, 255) !important;
+  }
+}
+
+.searchButton {
+  border-radius: 50px;
+  background-color: transparent;
+  font-size: 25px;
+  border: none;
+}
+
+app-search-results{
+  margin-left: 50px;
+}
+
+.yearInput{
+  background-color: #313131;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 35px;
+
+  &:active {
+    background-color: #313131;
+    color: white;
+    border: none;
+  }
+
+  &:focus {
+    background-color: #313131;
+    color: white;
+    border: none;
+    outline: none;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+}
+
